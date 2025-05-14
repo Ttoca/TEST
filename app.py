@@ -1,11 +1,22 @@
-from flask import Flask
+from flask import Flask, send_from_directory
 from flask_cors import CORS
 from api.auth import auth_bp
+import os
 
-app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}}) 
-# Registrar el blueprint de autenticación
+app = Flask(__name__, static_folder='build', static_url_path='/')
+CORS(app, resources={r"/api/*": {"origins": "*"}})
+
+# Registrar blueprint de API
 app.register_blueprint(auth_bp, url_prefix='/api/auth')
+
+# Ruta para servir el frontend (SPA)
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve_frontend(path):
+    if path != "" and os.path.exists(os.path.join(app.static_folder, path)):
+        return send_from_directory(app.static_folder, path)
+    else:
+        return send_from_directory(app.static_folder, 'index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
