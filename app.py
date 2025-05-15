@@ -9,14 +9,15 @@ CORS(app, resources={r"/api/*": {"origins": "*"}})
 # Registrar blueprint de API
 app.register_blueprint(auth_bp, url_prefix='/api/auth')
 
-# Ruta para servir el frontend (SPA)
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def serve_frontend(path):
-    if path != "" and os.path.exists(os.path.join(app.static_folder, path)):
+    file_path = os.path.join(app.static_folder, path)
+
+    if os.path.exists(file_path):
         return send_from_directory(app.static_folder, path)
-    else:
-        return send_from_directory(app.static_folder, 'index.html')
+
+    return send_from_directory(app.static_folder, 'index.html')
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
