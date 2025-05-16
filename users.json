@@ -1,6 +1,32 @@
 {
     "mateoandres2208@gmail.com": {
         "email": "mateoandres2208@gmail.com",
-        "password": "$2b$12$CmsCcTPhdMM9c92jh4XQhOe76MT.gd0lxdJxdGFhvUGc1pVNvqr92"
+        "password": "$2b$12$RDsfAMUCwIH.X87dRDTzSeAI3mEld5iBjsnHn0vjNJPgyZz4rUH9K",
+        "empresas": [
+            {
+                "id": "1700b37d",
+                "nombre": "TEST",
+                "logo": "https://img.remediosdigitales.com/96633b/140013_cor/450_1000.jpg",
+                "titular": "MATEO SOTO",
+                "config": {
+                    "horario": "LUN - VIERNES"
+                }
+            }
+        ]
+    },
+    "test@gmail.com": {
+        "email": "test@gmail.com",
+        "password": "$2b$12$esTb8VqQo0.MipU8m1KHEu2wj3L7RUTNMQT99JTyZtMK6c7CNMwg.",
+        "empresas": [
+            {
+                "id": "d03d8201",
+                "nombre": "PRUEBA",
+                "logo": "https://www.dolarbluebolivia.click/Logo.png",
+                "titular": "MATEO SOTO",
+                "config": {
+                    "horario": "lun - vie"
+                }
+            }
+        ]
     }
 }
