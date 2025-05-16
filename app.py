@@ -18,6 +18,7 @@ def static_proxy(path):
     else:
         return send_from_directory(app.static_folder, 'index.html')
 
+##test
 # Ruta principal
 @app.route('/')
 def index():
