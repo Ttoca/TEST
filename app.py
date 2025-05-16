@@ -11,7 +11,7 @@ CORS(app, resources={r"/api/*": {"origins": "*"}})
 app.register_blueprint(auth_bp, url_prefix='/api/auth')
 
 #Registro Blueprint de empresa
-app.register_blueprint(empresa_bp, url_prefix='/api/usuarios')
+app.register_blueprint(empresa_bp, url_prefix='/api')
 
 # Ruta para servir archivos estáticos
 @app.route('/<path:path>')
