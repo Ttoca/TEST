@@ -1,6 +1,7 @@
 from flask import Flask, send_from_directory
 from flask_cors import CORS
 from api.auth import auth_bp
+from api.empresa import empresa_bp
 import os
 
 app = Flask(__name__, static_folder='dist', static_url_path='')
@@ -8,6 +9,9 @@ CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 # Registrar blueprint de API
 app.register_blueprint(auth_bp, url_prefix='/api/auth')
+
+#Registro Blueprint de empresa
+app.register_blueprint(empresa_bp, url_prefix='/api/usuarios')
 
 # Ruta para servir archivos estáticos
 @app.route('/<path:path>')
