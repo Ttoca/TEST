@@ -69,4 +69,8 @@ def add_user_project(email, proyecto_data):
 
     users[email]["empresas"].append(nueva_empresa)
     save_users(users)
+<<<<<<< HEAD
     return True, nueva_empresa
+=======
+    return True, nueva_empresa
+>>>>>>> 44ede74550a0309e46b1b7f03ef6fd5a8b5ce14b

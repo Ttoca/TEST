@@ -2,9 +2,12 @@ from flask import Flask
 from flask_cors import CORS
 from api.auth import auth_bp
 from api.empresa import empresa_bp
+<<<<<<< HEAD
 from api.cola import cola_bp
 from Cola_utils import load_colas, save_colas
 from api.cola_config import cola_config_bp
+=======
+>>>>>>> 44ede74550a0309e46b1b7f03ef6fd5a8b5ce14b
 import os
 
 app = Flask(__name__)
@@ -30,6 +33,7 @@ def static_proxy(path):
     else:
         return send_from_directory(app.static_folder, 'index.html')
 
+##test
 # Ruta principal
 @app.route('/')
 def index():
