@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, send_from_directory
 from flask_cors import CORS
 from api.auth import auth_bp
 from api.empresa import empresa_bp
@@ -8,7 +8,7 @@ from api.cola_config import cola_config_bp
 import os
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "https://www.ttoca.online/"}}) 
+CORS(app, resources={r"/*": {"origins": ["https://www.ttoca.online", "http://localhost:5173"]}})
 
 # Registrar el blueprint de autenticación
 app.register_blueprint(auth_bp, url_prefix='/api/auth')
