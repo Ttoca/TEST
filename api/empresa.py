@@ -1,14 +1,6 @@
 from flask import Blueprint, jsonify, request
-<<<<<<< HEAD
 from auth_utils import get_user_projects, add_user_project, get_user_project_by_id, load_users, save_users
 
-=======
-from auth_utils import (
-    get_user_projects,
-    add_user_project,
-    get_user_project_by_id
-)
->>>>>>> 44ede74550a0309e46b1b7f03ef6fd5a8b5ce14b
 
 empresa_bp = Blueprint('empresa', __name__)
 
@@ -33,7 +25,6 @@ def obtener_empresa_por_id(correo, proyecto_id):
     if not proyecto:
         return jsonify({'message': 'Proyecto no encontrado'}), 404
     return jsonify({'empresa': proyecto})
-<<<<<<< HEAD
 
 @empresa_bp.route('/usuarios/<correo>/proyectos/<proyecto_id>', methods=['PUT'])
 def actualizar_empresa(correo, proyecto_id):
@@ -50,5 +41,3 @@ def actualizar_empresa(correo, proyecto_id):
             return jsonify({"message": "Actualizado correctamente", "empresa": empresa})
 
     return jsonify({"message": "Proyecto no encontrado"}), 404
-=======
->>>>>>> 44ede74550a0309e46b1b7f03ef6fd5a8b5ce14b
