@@ -9,6 +9,7 @@ import os
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "https://www.ttoca.online/"}}) 
+
 # Registrar el blueprint de autenticación
 app.register_blueprint(auth_bp, url_prefix='/api/auth')
 
@@ -21,7 +22,6 @@ app.register_blueprint(cola_bp, url_prefix='/api')
 #Registro para commitear configuraciones de las distintas queue que puede crear el usuario
 app.register_blueprint(cola_config_bp, url_prefix='/api')
 
-# Ruta para servir archivos estáticos
 @app.route('/<path:path>')
 def static_proxy(path):
     file_path = os.path.join(app.static_folder, path)
@@ -30,7 +30,6 @@ def static_proxy(path):
     else:
         return send_from_directory(app.static_folder, 'index.html')
 
-##test
 # Ruta principal
 @app.route('/')
 def index():
