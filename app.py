@@ -1,13 +1,25 @@
-from flask import Flask, send_from_directory
+from flask import Flask
 from flask_cors import CORS
 from api.auth import auth_bp
+from api.empresa import empresa_bp
+from api.cola import cola_bp
+from Cola_utils import load_colas, save_colas
+from api.cola_config import cola_config_bp
 import os
 
-app = Flask(__name__, static_folder='dist', static_url_path='')
-CORS(app, resources={r"/api/*": {"origins": "*"}})
-
-# Registrar blueprint de API
+app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}}) 
+# Registrar el blueprint de autenticación
 app.register_blueprint(auth_bp, url_prefix='/api/auth')
+
+#registro para commitear empresas desde /home
+app.register_blueprint(empresa_bp, url_prefix='/api')
+
+#Registro para commitear turnos desde /Dashboard
+app.register_blueprint(cola_bp, url_prefix='/api')
+
+#Registro para commitear configuraciones de las distintas queue que puede crear el usuario
+app.register_blueprint(cola_config_bp, url_prefix='/api')
 
 # Ruta para servir archivos estáticos
 @app.route('/<path:path>')
