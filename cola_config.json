@@ -1,0 +1,13 @@
+{
+    "d9e76035": {
+        "categorias": [
+            {
+                "id": "a88ee8b0-85b3-49b1-bd0d-957013b90ccc",
+                "nombre": "test",
+                "descripcion": "test",
+                "prioridad": false,
+                "tiempoEstimado": 5
+            }
+        ]
+    }
+}

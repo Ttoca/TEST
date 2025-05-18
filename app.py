@@ -8,7 +8,7 @@ from api.cola_config import cola_config_bp
 import os
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}}) 
+CORS(app, resources={r"/*": {"origins": "https://www.ttoca.online/"}}) 
 # Registrar el blueprint de autenticación
 app.register_blueprint(auth_bp, url_prefix='/api/auth')
 
