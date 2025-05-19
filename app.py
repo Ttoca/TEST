@@ -11,7 +11,12 @@ import os
 app = Flask(__name__, static_folder='dist')
 
 # CORS
-CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}})
+cors_origins = [
+    "http://localhost:5173",
+    "https://www.ttoca.online/",
+]
+
+CORS(app, resources={r"/api/*": {"origins": cors_origins}})
 
 # Cargar colas
 load_colas()
