@@ -22,3 +22,19 @@ def guardar_configuracion_empresa(empresa_id, config):
     data = cargar_configuracion()
     data[empresa_id] = config
     guardar_configuracion(data)
+
+def agregar_turno(empresa_id, cola_id, nombre):
+    cola_data = COLAS[empresa_id][cola_id]
+    numero_turno = cola_data.get("contador", 0) + 1
+    cola_data["contador"] = numero_turno
+
+    nuevo_turno = {
+        "id": str(uuid4()),
+        "nombre": nombre,
+        "numero": numero_turno
+    }
+    cola_data["turnos"].append(nuevo_turno)
+
+    guardar_colas()
+    return nuevo_turno
+

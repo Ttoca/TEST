@@ -43,3 +43,13 @@ def api_eliminar_cola(id_empresa, id_cola):
         return jsonify({"message": "Cola eliminada correctamente"})
     return jsonify({"message": "Cola no encontrada"}), 404
 
+
+@cola_bp.route('/proyectos/<id_empresa>/cola/<id_cola>/turno-actual', methods=['GET'])
+def api_turno_actual(id_empresa, id_cola):
+    from Cola_utils import obtener_turno_actual
+    turno = obtener_turno_actual(id_empresa, id_cola)
+    if turno:
+        return jsonify(turno)
+    return jsonify(None)
+
+

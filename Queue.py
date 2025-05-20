@@ -7,7 +7,8 @@ class Queue:
     def __init__(self):
         self.front = None
         self.back = None
-        self.count = 0
+        self.count = 0  # ✅ este sí lo usas para size()
+        self.contador = 0  # ✅ para asignar número incremental
 
     def push(self, value):
         new_node = Node(value)
