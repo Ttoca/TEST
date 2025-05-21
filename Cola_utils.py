@@ -2,9 +2,16 @@ import json
 import os
 from Queue import Queue
 import uuid
+import random
+import string
+
+
+
+def generar_codigo_corto():
+    return ''.join(random.choices(string.ascii_uppercase + string.digits, k=6))
 
 cola_file = "Queue.json"
-colas_virtuales = {}  # clave: empresa_id, valor: dict con cola_id -> Queue()
+colas_virtuales = {}
 
 def load_colas():
     global colas_virtuales
@@ -54,6 +61,7 @@ def agregar_turno(empresa_id, cola_id, turno_obj):
     q.contador += 1  # ✅ asigna número único
     turno_obj["id"] = str(uuid.uuid4())
     turno_obj["numero"] = q.contador
+    turno_obj["codigo"] = generar_codigo_corto()  # 👈 nuevo campo
 
     q.push(turno_obj)
     save_colas()
@@ -94,3 +102,48 @@ def guardar_turno_actual(empresa_id, cola_id, turno):
 
 def obtener_turno_actual(empresa_id, cola_id):
     return turnos_llamados.get(empresa_id, {}).get(cola_id)
+
+def obtener_posicion_turno(empresa_id, cola_id, identificador):
+    if empresa_id not in colas_virtuales or cola_id not in colas_virtuales[empresa_id]:
+        return None
+
+    q = colas_virtuales[empresa_id][cola_id]
+    current = q.front
+    posicion = 1
+
+    while current:
+        data = current.data
+        if (data.get("id") == identificador or data.get("nombre") == identificador or data.get("codigo") == identificador):
+            return {
+                "posicion": posicion,
+                "turno": data
+            }
+        current = current.next
+        posicion += 1
+
+    return None
+
+
+def buscar_turno_global(codigo):
+    for empresa_id, subcolas in colas_virtuales.items():
+        for cola_id, cola in subcolas.items():
+            current = cola.front
+            posicion = 1
+            while current:
+                data = current.data
+                if (
+                    data.get("id") == codigo
+                    or data.get("nombre") == codigo
+                    or data.get("codigo") == codigo
+                ):
+                    return {
+                        "empresa_id": empresa_id,
+                        "cola_id": cola_id,
+                        "posicion": posicion,
+                        "turno": data,
+                        "turnoActual": obtener_turno_actual(empresa_id, cola_id)
+                    }
+                current = current.next
+                posicion += 1
+    return None
+

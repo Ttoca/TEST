@@ -1,43 +1,12 @@
 {
     "d9e76035": {
         "f26456df-b8fa-4fbb-a4d3-cac3f46c80f0": {
-            "contador": 2,
-            "turnos": [
-                {
-                    "id": "3f0caff6-4745-42d4-8092-60fadba4ece1",
-                    "nombre": "test",
-                    "tipo": "RESTAURANTE",
-                    "numero": 1
-                },
-                {
-                    "id": "ddf7dae8-8c02-4c25-a79b-491b5a6d627b",
-                    "nombre": "test",
-                    "tipo": "RESTAURANTE",
-                    "numero": 2
-                }
-            ]
+            "contador": 26,
+            "turnos": []
         },
         "87db77f6-67b2-4d10-ae17-293309a94a93": {
-            "contador": 1,
-            "turnos": [
-                {
-                    "id": "eec9857c-08b6-4926-a54b-9e6cfdf59d05",
-                    "nombre": "test",
-                    "tipo": "asfas",
-                    "numero": 1
-                }
-            ]
-        },
-        "01a79d0c-5cb2-40d1-995b-399b87dc349c": {
-            "contador": 1,
-            "turnos": [
-                {
-                    "id": "bcdc824d-d01d-43c4-a7e5-02fe3adbb116",
-                    "nombre": "test",
-                    "tipo": "PEDIDOS YA",
-                    "numero": 1
-                }
-            ]
+            "contador": 4,
+            "turnos": []
         }
     }
 }
